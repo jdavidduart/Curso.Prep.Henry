@@ -3,18 +3,22 @@
 function devolverPrimerElemento(array) {
   // Devuelve el primer elemento de un array
   // Tu código:
+  return array[0];
+
 }
 
 
 function devolverUltimoElemento(array) {
   // Devuelve el último elemento de un array
   // Tu código:
+  return array.pop();
 }
 
 
 function obtenerLargoDelArray(array) {
   // Devuelve el largo de un array
   // Tu código:
+  return array.length;
 }
 
 
@@ -23,6 +27,10 @@ function incrementarPorUno(array) {
   // Aumenta cada entero por 1
   // y devuelve el array
   // Tu código:
+  for(var i=0;i<array.length;i++){
+    array[i]=array[i]+1;
+  } 
+  return array;
 }
 
 
@@ -30,6 +38,9 @@ function agregarItemAlFinalDelArray(array, elemento) {
   // Añade el "elemento" al final del array
   // y devuelve el array
   // Tu código:
+  array.push(elemento);
+  return array;
+  
 }
 
 
@@ -38,6 +49,8 @@ function agregarItemAlComienzoDelArray(array, elemento) {
   // y devuelve el array
   // Pista: usa el método `.unshift`
   // Tu código:
+  array.unshift(elemento);
+  return array;
 }
 
 
@@ -47,13 +60,30 @@ function dePalabrasAFrase(palabras) {
   // con espacios entre cada palabra
   // Ejemplo: ['Hello', 'world!'] -> 'Hello world!'
   // Tu código:
+  var str=[];
+  var long=palabras.length;
+
+  for(var i=0;i<long;i++){
+    if((i<long)&&(i!=long-1)){
+    str=str+ palabras[i]+" ";
+    }
+    if(i==long-1){str=str+ palabras[i]}
+  }
+  return str;
 }
 
-
-function arrayContiene(array, elemento) {
   // Comprueba si el elemento existe dentro de "array"
   // Devuelve "true" si está, o "false" si no está
   // Tu código:
+function arrayContiene(array, elemento) {
+
+  var long=array.length;
+  var x=0;
+  for(var i=0;i<long;i++){
+    if(array[i]==elemento){x=x+1;}
+  }
+  if(x>0){return true}
+  if(x==0){return false}
 }
 
 
@@ -61,6 +91,12 @@ function agregarNumeros(numeros) {
   // "array" debe ser una matriz de enteros (int/integers)
   // Suma todos los enteros y devuelve el valor
   // Tu código:
+  var suma=0;
+  var long=numeros.length;
+  for(var i=0;i<long;i++){
+    suma=suma+numeros[i];
+  }
+  return suma;
 }
 
 
@@ -68,6 +104,13 @@ function promedioResultadosTest(resultadosTest) {
   // "resultadosTest" debe ser una matriz de enteros (int/integers)
   // Itera (en un bucle) los elementos del array, calcula y devuelve el promedio de puntajes
   // Tu código:
+  var suma=0;
+  var long=resultadosTest.length;
+  for(var i=0;i<long;i++){
+    suma=resultadosTest[i]+suma;
+  }
+  return suma/long;
+
 }
 
 
@@ -75,6 +118,13 @@ function numeroMasGrande(numeros) {
   // "numeros" debe ser una matriz de enteros (int/integers)
   // Devuelve el número más grande
   // Tu código:
+  var masg=0;
+  var long=numeros.length;
+  for(var i=0;i<long;i++){
+    if(numeros[i]>masg){masg=numeros[i]}
+  }
+  return masg;
+  
 }
 
 
@@ -82,13 +132,29 @@ function multiplicarArgumentos() {
   // Usa la palabra clave `arguments` para multiplicar todos los argumentos y devolver el producto
   // Si no se pasan argumentos devuelve 0. Si se pasa un argumento, simplemente devuélvelo
   // Escribe tu código aquí:
+  var long=arguments.length;
+  if(long>0){
+    var mul=1;
+    for(var i=0;i<long;i++){
+    mul=arguments[i]*mul;
+    }
+    return mul;
+  }
+  if(long==0){return 0}
+  if(long==1){return arguments[0]}
+  
 }
 
 
 function cuentoElementos(arreglo){
   //Realiza una función que retorne la cantidad de los elementos del arreglo cuyo valor es mayor a 19.
   //Escribe tu código aquí
-
+  var long=arreglo.length;
+  var cant=0;
+  for(var i=0;i<long;i++){
+    if(arreglo[i]>19){cant=cant+1}
+  }
+  return cant;
 }
 
 
@@ -96,7 +162,9 @@ function diaDeLaSemana(numeroDeDia) {
   //Suponga que los días de la semana se codifican como 1 = Domingo, 2 = Lunes y así sucesivamente. 
   //Realiza una función que dado el número del día de la semana, retorne: Es fin de semana
   //si el día corresponde a Sábado o Domingo y “Es dia Laboral” en caso contrario. 
-  //Escribe tu código aquí   
+  //Escribe tu código aquí 
+  if((numeroDeDia>1)&&(numeroDeDia<6)){return "Es dia Laboral"}
+  if((numeroDeDia==1)||(numeroDeDia==7)){return "Es fin de semana"}
   
 } 
 
